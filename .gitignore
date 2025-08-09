@@ -1,0 +1,40 @@
+# ---- OS / Editor junk ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# Logs & temp
+*.log
+*.tmp
+npm-debug.log*
+yarn-error.log*
+
+# Dependency / build folders (future-proof)
+node_modules/
+dist/
+build/
+out/
+.cache/
+.temp/
+
+# Coverage / test artifacts
+coverage/
+*.lcov
+
+# Env / secrets (if later added)
+.env
+.env.*
+!.env.example
+
+# System files
+$RECYCLE.BIN/
+
+# Misc
+*.swp
+*.sass-cache
+*.pid

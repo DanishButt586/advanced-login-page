@@ -1,83 +1,136 @@
-# Animated Multi-Theme Glass Login UI
+<div align="center">
 
-Short description: Animated multi-theme glass login with adaptive effects & playful evasive button.
+# Animated Multi‑Theme Glass Login UI
 
-Extended description:
-A polished, animated, glassmorphic login interface built with vanilla HTML/CSS/JS. Features four switchable color themes (default, midnight, aurora, sunset), adaptive performance (auto-reduces heavy visuals on low FPS), accessible focus/error states, subtle 3D/halo depth, dynamic line background, and a mischievous login button that dodges incomplete attempts.
+<em>Polished. Adaptive. Accessible. Playful.</em>
 
-## ✨ Features
-- Multi-theme system (buttons to switch instantly)
-- Glassmorphism + gradients + halo + soft orb lighting
-- Animated dynamic line background (auto-throttled for perf)
-- Adaptive performance: disables heavier layers on low FPS devices
-- Evasive ("runaway") login button until both fields have content
-- Accessible: focus-visible styles, aria-live error region, readable contrasts
-- Floating labels with smooth transitions
-- Password show/hide toggle
-- Minimal, dependency-free (pure HTML/CSS/JS)
+**Author:** Danish Butt  •  **Stack:** HTML · CSS · JavaScript (no frameworks)
 
-## 📂 Structure
+<br/>
+</div>
+
+> An eye‑catching login experience featuring glassmorphism, soft lighting, animated line backdrop, multi‑theme switching, adaptive performance fallback, and a mischievous evasive login button that refuses weak input.
+
+## ✨ Highlights
+| Category | What You Get |
+|----------|--------------|
+| Visual Style | Glass layers, halo glow, subtle depth + parallax tilt |
+| Theming | 4 instant themes (Default, Midnight, Aurora, Sunset) via CSS variables |
+| Motion | Animated lines canvas + breathable orb ambience (auto-throttled) |
+| Playfulness | Evasive (runaway) login button until both fields are filled |
+| Performance | FPS probe removes heavier effects on low-end devices |
+| Accessibility | Visible labels, focus rings, aria-live errors, strong contrast |
+| UX Details | Floating labels, password toggle, responsive layout |
+| Simplicity | Pure HTML/CSS/JS – easy to drop into any project |
+
+## 🖼 Preview (Add Screenshots)
+Create a `screenshots/` folder and drop e.g.:
 ```
-login.html   # Main page markup
-style.css    # Themes, layout, visuals, animations, responsiveness, accessibility
-script.js    # Theme switching, performance guard, button logic, animations control
+screenshots/
+	default-theme.png
+	midnight-theme.png
+	aurora-theme.png
+	sunset-theme.png
+```
+Then embed:
+`![](screenshots/default-theme.png)`
+
+## 🎨 Theme System
+Themes are defined with `[data-theme="..."]` blocks setting CSS custom properties:
+```
+--accent, --accent-alt, --accent-hover, --accent-glow, --accent-link
+```
+Add a new theme by cloning one block in `style.css` and adjusting values.
+
+## 🧠 Adaptive Performance Logic
+An initial ~0.8s frame sample estimates FPS. If below the threshold, the script applies `low-perf` and removes heavier decorative layers (e.g. beam effects) while retaining core interactivity & clarity.
+
+## ♿ Accessibility Commitments
+- Semantic labels (no placeholder-only anti-pattern)
+- `aria-live` region for dynamic messages (hidden until needed)
+- High-contrast focus outlines preserved
+- Motion stops (button returns) once input is valid
+- Legible sizing & weight upgrades for readability
+
+## 🧪 Folder Structure
+```
+login.html   # Markup + theme switcher + structure
+style.css    # Variables, themes, visual depth, animations, responsive rules
+script.js    # Theme logic, performance guard, evasive button + background lines
+README.md    # Project documentation
 ```
 
-## 🎨 Themes
-- Default (cool blue accent)
-- Midnight (deep, high-contrast blues)
-- Aurora (teal / mint energy)
-- Sunset (warm orange/pink glow)
-
-Each theme swaps CSS custom properties (`--accent`, `--accent-glow`, etc.) so extending is simple: duplicate a theme block and adjust variables.
-
-## 🧠 Adaptive Performance
-A quick FPS sampling runs after load; if under threshold, heavy layers (like beam effects) are removed and a `low-perf` class is applied—ensuring smooth interaction on weaker devices.
-
-## ♿ Accessibility Notes
-- Labels remain visible (not placeholders only)
-- Error message region uses `aria-live="polite"`
-- Focus styles are high contrast and not removed
-- Button motion stops once fields are valid to avoid obstruction
-
-## 🚀 Getting Started
-Open `login.html` directly in a modern browser:
+## 🚀 Quick Start
+Open the page directly:
+```powershell
+Set-Location "D:\Experiement on Web\Login Page"
+Start-Process .\login.html
 ```
-# Windows (PowerShell)
-Start-Process "D:\Experiement on Web\Login Page\login.html"
-```
-No build step required.
+Or just double‑click `login.html` in your file explorer.
 
-## 🔧 Customization
-| Goal | Where | Hint |
-|------|-------|------|
-| Add theme | `style.css` | Copy a `[data-theme="..."]` block & adjust vars |
-| Change evasive behavior | `script.js` | See `moveButtonRandom()` & proximity logic |
-| Tweak performance threshold | `script.js` | In perfCheck (FPS comparison) |
-| Add success states | `style.css` + `script.js` | Add `.message.success { ... }` & toggle class |
+## 🔧 Common Customizations
+| Goal | File | Tip |
+|------|------|-----|
+| Add a theme | style.css | Duplicate a theme block & tweak `--accent*` vars |
+| Reduce motion | script.css + style.css | Add a `[data-reduced]` flag & gate animations |
+| Change evasive logic | script.js | Edit `moveButtonRandom()` & proximity radius |
+| Success message style | style.css | Add `.message.success { border-color:... }` |
+| Turn off roaming | script.js | Bypass calls to `moveButtonRandom()` when empty |
 
-## 🧪 Ideas for Enhancement
-- Add success / warning message color variants
-- Integrate real auth API (replace playful logic)
-- Provide user-controlled reduced motion toggle
-- Export background to a WebGL variant for richer effects
+## 🛤 Roadmap Ideas
+- Success / warning message variants
+- Reduced‑motion user toggle
+- Optional WebGL background mode
+- Light mode variant with dynamic contrast
+- Credential validation integration / API hook
 
-## 🛡️ License
-MIT (recommended). Add a `LICENSE` file:
+## 🧩 Architecture at a Glance
+| Layer | Responsibility |
+|-------|----------------|
+| HTML | Structure, accessibility hooks, theme buttons |
+| CSS | Themes (custom properties), visual depth, animations, layout |
+| JS | Theme activation, performance probe, evasive button logic, canvas lines |
+
+## 🧪 Performance Notes
+- Short frame sampling instead of heavy continuous monitoring
+- Canvas resolution capped by DPR strategy
+- Expensive layers removed under `low-perf`
+- Minimal reflows: transforms used for motion
+
+## � Security Notice
+This is a UI demo only. No real authentication logic or hashing is implemented. Integrate with your backend before production use.
+
+## 🛡 License (MIT)
 ```
 MIT License
 
-Copyright (c) YEAR YOUR_NAME
+Copyright (c) 2025 Danish Butt
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-... (standard MIT text) ...
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
-## 🙌 Attribution / Credits
-All code authored locally (vanilla). No external JS libs. Fonts: Google Fonts (Inter).
+## 👤 Author
+**Danish Butt**  
+Passionate about crafting visually rich yet performant interfaces. Feel free to open issues or suggestions.
 
-## 📄 Repo Description Suggestion
-Animated, glassy, multi-theme login UI with adaptive performance, accessible focus/error states, and a playful evasive login button.
+## ⭐ Support
+If this UI helped or inspired you, consider starring the repository so others can discover it.
 
 ---
-Feel free to request a minified production variant or GitHub Pages deployment instructions next.
+Ready for GitHub Pages deployment instructions or a minified asset variant? Just ask.
